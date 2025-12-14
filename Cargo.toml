@@ -1,0 +1,29 @@
+[package]
+name = "pipeweaver-app"
+version = "0.1.0"
+edition = "2024"
+build = "build.rs"
+
+authors = ["Craig McLure <craig@mclure.net>"]
+repository = "https://github.com/pipeweaver/pipeweaver"
+license = "MIT"
+
+[dependencies]
+anyhow = "1.0.100"
+log = "0.4.28"
+env_logger = "0.11.8"
+
+qmetaobject = { version = "0.2.10", features = ["webengine"] }
+qttypes = "0.2.12"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+dirs = "6.0.0"
+
+tungstenite = "0.28.0"
+url = "2.5"
+cpp = "0.5.10"
+
+[build-dependencies]
+semver = "1"
+cpp_build = "0.5"
+pkg-config = "0.3.32"
