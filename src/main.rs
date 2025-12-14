@@ -1,4 +1,5 @@
 use anyhow::{Result, anyhow, bail};
+use cpp::cpp;
 use dirs::runtime_dir;
 use log::{debug, error, info, warn};
 use qmetaobject::QObjectPinned;
@@ -12,9 +13,8 @@ use std::rc::Rc;
 use std::sync::mpsc;
 use std::time::Duration;
 use std::{env, fs, thread};
-use cpp::cpp;
+use tungstenite::http::Uri;
 use tungstenite::{Message, connect};
-use url::Url;
 
 mod window_handler;
 mod window_properties;
@@ -130,16 +130,21 @@ fn real_main() -> Result<()> {
 
 fn websocket_main_thread(res: mpsc::Sender<Result<()>>, tx: mpsc::Sender<WindowMessage>) {
     // We need to spawn up a Websocket connection, then simply read from it until closed
-    let url = match Url::parse("ws://localhost:14565/api/websocket") {
-        Ok(url) => url,
+    let uri = match Uri::builder()
+        .authority("localhost:14565")
+        .scheme("ws")
+        .path_and_query("/api/websocket")
+        .build()
+    {
+        Ok(uri) => uri,
         Err(e) => {
             let _ = res.send(Err(anyhow!(e)));
             return;
         }
     };
 
-    info!("Attempting to connect to Pipeweaver at {url}");
-    let (mut socket, response) = match connect(url) {
+    info!("Attempting to connect to Pipeweaver at {uri}");
+    let (mut socket, response) = match connect(uri) {
         Ok((socket, response)) => (socket, response),
         Err(e) => {
             let _ = res.send(Err(anyhow!(e)));
