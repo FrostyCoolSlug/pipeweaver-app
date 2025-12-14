@@ -32,7 +32,7 @@ pkg-config = "0.3.32"
 name = "pipeweaver-app"
 assets = [
     # In theory, all the Pipeweaver icons should already be present when installing
-    ["../target/release/pipeweaver-app", "usr/bin/", "755"],
+    ["target/release/pipeweaver-app", "usr/bin/", "755"],
 ]
 
 section = "sound"
@@ -44,9 +44,9 @@ A tool for audio control and routing via Pipewire
 revision = "1"
 
 [package.metadata.generate-rpm]
-name = "pipeweaver"
+name = "pipeweaver-app"
 assets = [
-    { source = "../target/release/pipeweaver-app", dest = "/usr/bin/pipeweaver-app", mode = "0755" },
+    { source = "target/release/pipeweaver-app", dest = "/usr/bin/pipeweaver-app", mode = "0755" },
 ]
 
 # Because we build under Ubuntu in CI, generate-rpm is unable to calculate the dependencies required (no access
