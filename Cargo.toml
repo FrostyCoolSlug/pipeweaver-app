@@ -1,12 +1,17 @@
 [package]
-name = "pipeweaver-app"
 version = "0.1.0"
 edition = "2024"
+
+name = "pipeweaver-app"
+description = "A UI Wrapper app for Pipeweaver"
+
 build = "build.rs"
 
 authors = ["Craig McLure <craig@mclure.net>"]
-repository = "https://github.com/pipeweaver/pipeweaver"
 license = "MIT"
+
+homepage = "https://pipeweaver.github.io/"
+repository = "https://github.com/pipeweaver/pipeweaver"
 
 [dependencies]
 anyhow = "1.0.100"
