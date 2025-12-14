@@ -20,10 +20,10 @@ fi
 # To work around this, we force a release build, copy out the shell completions produced from that build, put it into
 # a predictable locaion and then build the packages, which knows where to look.
 cargo build --release --all-features
-strip target/release/pipeweaver-daemon
+strip target/release/pipeweaver-app
 
 # Now, first build the .deb file (We don't need to recompile the code here)..
-cargo deb -p pipeweaver-daemon --no-build
+cargo deb --no-build
 
 # Then the RPM
-cargo generate-rpm -p daemon
+cargo generate-rpm
