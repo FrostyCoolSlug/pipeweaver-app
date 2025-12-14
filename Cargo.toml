@@ -38,7 +38,7 @@ name = "pipeweaver-app"
 assets = [
     # In theory, all the Pipeweaver icons should already be present when installing
     ["target/release/pipeweaver-app", "usr/bin/", "755"],
-    ["resources/desktop/pipeweaver-app.desktop", "usr/share/applications/", "644"],
+    ["resources/pipeweaver-app.desktop", "usr/share/applications/", "644"],
 ]
 
 section = "sound"
