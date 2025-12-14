@@ -94,7 +94,7 @@ fn real_main() -> Result<()> {
     unsafe {
         cpp!([] {
             QGuiApplication::setDesktopFileName("pipeweaver-app");
-            QGuiApplication::setWindowIcon(QIcon(QString(":/webengine/resources/pipeweaver.svg")));
+            //QGuiApplication::setWindowIcon(QIcon(QString(":/webengine/resources/pipeweaver.svg")));
         });
     }
 

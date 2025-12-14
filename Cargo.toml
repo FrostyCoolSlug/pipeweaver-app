@@ -38,6 +38,7 @@ name = "pipeweaver-app"
 assets = [
     # In theory, all the Pipeweaver icons should already be present when installing
     ["target/release/pipeweaver-app", "usr/bin/", "755"],
+    ["resources/desktop/pipeweaver-app.desktop", "usr/share/applications/", "644"],
 ]
 
 section = "sound"
@@ -52,6 +53,7 @@ revision = "1"
 name = "pipeweaver-app"
 assets = [
     { source = "target/release/pipeweaver-app", dest = "/usr/bin/pipeweaver-app", mode = "0755" },
+    { source = "resources/pipeweaver-app.desktop", dest = "/usr/share/applications/pipeweaver-app.desktop", mode = "0644" },
 ]
 
 # Because we build under Ubuntu in CI, generate-rpm is unable to calculate the dependencies required (no access
