@@ -26,3 +26,33 @@ cpp = "0.5.10"
 semver = "1"
 cpp_build = "0.5"
 pkg-config = "0.3.32"
+
+## Ok, Build Stuff Time :D
+[package.metadata.deb]
+name = "pipeweaver-app"
+assets = [
+    # In theory, all the Pipeweaver icons should already be present when installing
+    ["../target/release/pipeweaver-app", "usr/bin/", "755"],
+]
+
+section = "sound"
+priority = "optional"
+depends = "pipeweaver (>= 0.1.0), libqt6webenginewidgets6 (>= 6.2.0)"
+extended-description = """\
+A tool for audio control and routing via Pipewire
+"""
+revision = "1"
+
+[package.metadata.generate-rpm]
+name = "pipeweaver"
+assets = [
+    { source = "../target/release/pipeweaver-app", dest = "/usr/bin/pipeweaver-app", mode = "0755" },
+]
+
+# Because we build under Ubuntu in CI, generate-rpm is unable to calculate the dependencies required (no access
+# to rpm / yum), so we need to disable the auto and specify dependencies manually.
+auto-req = "no"
+
+[package.metadata.generate-rpm.requires]
+pipeweaver = ">= 0.1.0"
+qt6-qtwebengine = ">= 6.2.0"
