@@ -44,7 +44,7 @@ section = "sound"
 priority = "optional"
 depends = "pipeweaver (>= 0.1.0), libqt6webenginewidgets6 (>= 6.2.0), qml6-module-qtwebengine (>= 6.2.0)"
 extended-description = """\
-A tool for audio control and routing via Pipewire
+A QT based wrapper around the Pipeweaver UI
 """
 revision = "1"
 
